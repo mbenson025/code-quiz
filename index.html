@@ -10,7 +10,11 @@
 
   <body>
     <header>
-      <a id="highscores" class="highscores" href="highscore.placeholder"
+      <a
+        type="button"
+        id="highscores"
+        class="highscores"
+        href="highscore.placeholder"
         >High Scores</a
       >
       <h2 class="timer" id="timer">Time: 00</h2>
@@ -22,18 +26,19 @@
         <button class="begin" id="begin">Begin</button>
       </div>
     </div>
-    <div class="quiz-main" id="quiz-main">
-      <div class="quiz-box" id="quizbox">
-        <div class="question-header">
+    <div class="quiz" id="quiz">
+      <div class="quiz-main" id="quiz-main">
+        <div class="quiz-box" id="quizbox">
           <h2 class="question" id="question">Question</h2>
 
           <div class="answersection" id="answersection">
             <ul>
-              <li class="answer" id="answer1">Answer 1</li>
-              <li class="answer" id="answer2">Answer 2</li>
-              <li class="answer" id="answer3">Answer 3</li>
-              <li class="answer" id="answer4">Answer 4</li>
+              <li class="answer" id="a">Answer 1</li>
+              <li class="answer" id="b">Answer 2</li>
+              <li class="answer" id="c">Answer 3</li>
+              <li class="answer" id="d">Answer 4</li>
             </ul>
+            <small>Feedback</small>
           </div>
         </div>
       </div>
