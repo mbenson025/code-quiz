@@ -1,6 +1,6 @@
 // global variables
 let score = 0;
-let time = 75;
+let time = 76;
 var questionDisplay = 0;
 var gameRunning;
 
@@ -25,37 +25,37 @@ var question = document.querySelector('#question')
 let quizQuestions = [
   {
     question: 'Which word represents the absence of a value?',
-    choices: ['Variable','null', 'Operator', 'JavaScript'],
+    choice: ['Variable','null', 'Operator', 'JavaScript'],
     correctchoice: 'null'
 
   },
   {
     question: 'What can a "loop" be used for in Javascript?',
-    choices: ['Storing data on a browser window', 'Changing a string to a number', 'Perform repeated tasks based on a condition', 'Downloading a file'],
+    choice: ['Storing data on a browser window', 'Changing a string to a number', 'Perform repeated tasks based on a condition', 'Downloading a file'],
     correctchoice: 'Perform repeated tasks based on a condition',
 
   },
   {
     question: 'What is the name of a series of characters inside a set of quotes?',
-    choices: ['string', 'yarn', 'function', 'hot dog'],
+    choice: ['string', 'yarn', 'function', 'hot dog'],
     correctchoice: 'string'
 
   },
   {
     question: 'Which method removes the last element of an array?',
-    choices: ['pop()', 'sort()', 'valueOf()', 'join()'],
+    choice: ['pop()', 'sort()', 'valueOf()', 'join()'],
     correctchoice: 'pop()'
 
   },
   {
     question: 'What is "concatenation" in coding?',
-    choices: ['Sorting alphabetically', 'Writing information to the browser console', 'Copying a line of code', 'Merging two or more strings'],
+    choice: ['Sorting alphabetically', 'Writing information to the browser console', 'Copying a line of code', 'Merging two or more strings'],
     correctchoice: 'Merging two or more strings'
 
   },
   {
     question: 'How long did it take to develop JavaScript?',
-    choices: ['4 years', '2 years', '10 days', '9 months'],
+    choice: ['4 years', '2 years', '10 days', '9 months'],
     correctchoice: '10 days',
 
   },
@@ -68,7 +68,13 @@ let quizQuestions = [
 
 
 function startQuiz() {
-setInterval(countdown, 1000)
+  // if (choice === correctchoice) {
+  //   feedback.innerHTML = 'Correct!';
+  //   return true;
+  // } else {
+  //   feedback.innerHTML = 'Wrong!';
+  //   return false;
+  // }
 }
 
 //pick a question
@@ -86,6 +92,14 @@ function countdown() {
     gameRunning = false;
   }
   timeClock.innerHTML = time;
+
+  setInterval(countdown, 1000)
+}
+
+function gameOver () {
+  if (gameRunning = false && time <=0) {
+      feedback.innerHTML = 'Game Over!';
+  }
 }
 
 
@@ -102,7 +116,7 @@ begin.addEventListener('click', function(e) {
 
   startQuiz();
   // startTimer();
-  countdown
+  countdown();
 })
 
 
