@@ -1,7 +1,7 @@
 // global variables
 let score = 0;
-let time = 76;
-var questionDisplay = 0;
+let timeLeft = 75;
+var index = 0;
 var gameRunning;
 
 // DOM variables
@@ -9,13 +9,18 @@ var quiz = document.getElementById('quiz');
 var win = document.getElementById('win');
 var lose = document.getElementById('lose');
 var begin = document.getElementById('begin');
-var timeClock = document.getElementById('time');
+var time = document.getElementById('time');
 var startpage = document.getElementById('startpage');
 var quizmain = document.getElementById('quiz-main');
-var answer = document.getElementById('answer');
+var aEl = document.getElementById('a');
+var bEl = document.getElementById('b');
+var cEl = document.getElementById('c');
+var dEl = document.getElementById('d');
 
 
-var question = document.querySelector('#question')
+
+var questionEl = document.getElementById('question-title')
+
 
 
 
@@ -62,45 +67,79 @@ let quizQuestions = [
 ];
 
 
+function chooseQuestion() {
+  // clear question
+  // questionEl.textContent = "";
 
+  var index = 0;
 
-
-
-
-function startQuiz() {
-  // if (choice === correctchoice) {
-  //   feedback.innerHTML = 'Correct!';
-  //   return true;
-  // } else {
-  //   feedback.innerHTML = 'Wrong!';
-  //   return false;
-  // }
+  questionEl.textContent = quizQuestions[index].question;
+  aEl.textContent = quizQuestions[index].choice[0];
+  bEl.textContent = quizQuestions[index].choice[1];
+  cEl.textContent = quizQuestions[index].choice[2];
+  dEl.textContent = quizQuestions[index].choice[3];
 }
 
-//pick a question
-function displayQuestion(quizQuestions) {
-  let index = Math.floor(Math.random() * quizQuestions.length)
 
-  question.innerHTML = quizQuestions[index];
-}
 
+
+
+
+function gameStart() {
+
+  for (i = 0; i < 5; i++)
+    if (i < 6) {
+      index++;
+      chooseQuestion();
+
+    }else {
+      gameOver();
+    }
+  }
+
+  
 function countdown() {
-  if(time>0) {
-    time--;
-  } else if(time <= 0) {
-    //GAME OVER-----
-    gameRunning = false;
-  }
-  timeClock.innerHTML = time;
+  timeLeft = 75;
 
-  setInterval(countdown, 1000)
+  var timeInterval = setInterval(function () {
+    if (timeLeft >= 0) {
+      time.textContent = timeLeft;
+      timeLeft--;
+
+    } else {
+      
+      clearInterval(timeInterval);
+
+      // window.alert("Game Over!")
+    }
+  }, 1000);
 }
 
-function gameOver () {
-  if (gameRunning = false && time <=0) {
-      feedback.innerHTML = 'Game Over!';
+
+
+
+
+function compareAnswer() {
+
+
+
+
   }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,9 +153,7 @@ begin.addEventListener('click', function(e) {
 
   // console.log('test');
 
-  startQuiz();
-  // startTimer();
-  countdown();
+  gameStart();
 })
 
 
