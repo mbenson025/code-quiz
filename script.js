@@ -16,11 +16,12 @@ var aEl = document.getElementById('a');
 var bEl = document.getElementById('b');
 var cEl = document.getElementById('c');
 var dEl = document.getElementById('d');
+var answerSection = document.getElementById('answersection');
 
 
+var questionEl = document.getElementById('question-title');
 
-var questionEl = document.getElementById('question-title')
-
+var userChoice = document.querySelectorAll('.answer');
 
 
 
@@ -31,37 +32,37 @@ let quizQuestions = [
   {
     question: 'Which word represents the absence of a value?',
     choice: ['Variable','null', 'Operator', 'JavaScript'],
-    correctchoice: 'null'
+    correctChoice: 'null'
 
   },
   {
     question: 'What can a "loop" be used for in Javascript?',
     choice: ['Storing data on a browser window', 'Changing a string to a number', 'Perform repeated tasks based on a condition', 'Downloading a file'],
-    correctchoice: 'Perform repeated tasks based on a condition',
+    correctChoice: 'Perform repeated tasks based on a condition'
 
   },
   {
     question: 'What is the name of a series of characters inside a set of quotes?',
     choice: ['string', 'yarn', 'function', 'hot dog'],
-    correctchoice: 'string'
+    correctChoice: 'string'
 
   },
   {
     question: 'Which method removes the last element of an array?',
     choice: ['pop()', 'sort()', 'valueOf()', 'join()'],
-    correctchoice: 'pop()'
+    correctChoice: 'pop()'
 
   },
   {
     question: 'What is "concatenation" in coding?',
     choice: ['Sorting alphabetically', 'Writing information to the browser console', 'Copying a line of code', 'Merging two or more strings'],
-    correctchoice: 'Merging two or more strings'
+    correctChoice: 'Merging two or more strings'
 
   },
   {
     question: 'How long did it take to develop JavaScript?',
     choice: ['4 years', '2 years', '10 days', '9 months'],
-    correctchoice: '10 days',
+    correctChoice: '10 days'
 
   },
 ];
@@ -69,7 +70,8 @@ let quizQuestions = [
 
 function chooseQuestion() {
   // clear question
-  // questionEl.textContent = "";
+  questionEl.textContent = "";
+  userChoice.textcontent = "";
 
   var index = 0;
 
@@ -87,7 +89,7 @@ function chooseQuestion() {
 
 function gameStart() {
 
-  for (i = 0; i < 5; i++)
+  for (i = 0; i < 6; i++)
     if (i < 6) {
       index++;
       chooseQuestion();
@@ -97,7 +99,7 @@ function gameStart() {
     }
   }
 
-  
+
 function countdown() {
   timeLeft = 75;
 
@@ -120,6 +122,22 @@ function countdown() {
 
 
 function compareAnswer() {
+  // e.preventDefault();
+  let correctAnswer = quizQuestions[index].correctChoice;
+
+
+
+
+
+  if (quizQuestions[index].correctChoice != quizQuestions[index].choice) {
+    timeLeft -= 10;
+    chooseQuestion();
+
+  }else {
+    timeLeft += 5
+    chooseQuestion();
+
+  }
 
 
 
@@ -130,7 +148,9 @@ function compareAnswer() {
 
 
 
+function gameOver() {
 
+}
 
 
 
@@ -154,10 +174,21 @@ begin.addEventListener('click', function(e) {
   // console.log('test');
 
   gameStart();
+  countdown();
 })
 
+// userChoice.forEach(uc => {
+//   uc.addEventListener('click', compareAnswer);
 
+// });
 
+answerSection.addEventListener('click', (e) => {
+  // console.log(e.target); --tests clicking the buttons
+    if (e.target.classList.contains('answer')) {
+      compareAnswer();
+    }
+
+});
 
 
 
