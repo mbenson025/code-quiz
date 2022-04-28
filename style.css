@@ -5,6 +5,7 @@
 :root {
   --primary-color: #C7D3D4FF;
   --secondary-color: #0063B2FF;
+  background-color: #28334AFF;
 }
 
 
@@ -38,6 +39,7 @@ header {
 
 .highscores:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 
@@ -46,27 +48,29 @@ header {
   font-size: 1.8rem;
   text-decoration: none;
   margin-right: 30px;
+  color: #fff;
 }
 
 #quiz-main {
   font-family: 'Lato', sans-serif;
-  height: 100vh;
+  height: 95vh;
   margin: 0;
   display:flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-color);
+  background-color: #28334AFF;
   overflow: hidden;
   display: none;
 }
 
 .quiz-box {
-  background-color: #f6f6f6;
+  background-color: var(--primary-color);
   border-radius: 10px;
   padding: 20px;
   width: 60%;
   height: 60%;
+  border: 2px solid var(--secondary-color);
 }
 
 h2 {
@@ -101,7 +105,7 @@ ul li {
 }
 
 .answer:hover {
-  background-color:#195190FF;
+  opacity: 0.9;
 }
 
 .answersection small { 
@@ -122,7 +126,7 @@ ul li {
   justify-content: center;
   height: 60vh;
   margin: 0;
-  background-color: #fff;
+  background-color: #28334AFF;
   /* display: none; */
 }
 
@@ -155,7 +159,7 @@ p {
 }
 
 .begin:hover {
-  background-color: #195190FF;
+  opacity: 0.9;
 }
 
 

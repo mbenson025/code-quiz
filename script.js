@@ -103,14 +103,15 @@ function chooseQuestion() {
 
 function countdown() {
   var timeInterval = setInterval(function () {
-    if (timeLeft >= 0) {
       time.textContent = timeLeft;
       timeLeft--;
-
-    } else {
-      
+    
+    if (timeLeft === 0) {
       clearInterval(timeInterval);
-
+      gameOver();
+} 
+    if (index === quizQuestions.length - 1) {
+      clearInterval(timeInterval);
       gameOver();
     }
   }, 1000);
@@ -126,7 +127,7 @@ function compareAnswer(e) {
   console.log(userSelect);
   e.preventDefault();
 
-  if(index === 5) {
+  if(index === quizQuestions.length - 1) {
     gameOver();
   }
 
@@ -135,11 +136,12 @@ function compareAnswer(e) {
     timeLeft += 5;
     index++;
     feedback.style.display = 'block';
-    feedback.textContent = 'Correct!'
-    // setTimout makes the message disappear!
+    feedback.textContent = 'Correct!';
+    // feedback.style.color = 'green';
+    // setTimeout makes the message disappear!
     setTimeout(function() {
       feedback.style.display = 'none';
-    }, 1100);
+      }, 1100);
     chooseQuestion();
 
   } else {
@@ -147,26 +149,28 @@ function compareAnswer(e) {
     timeLeft -= 5
     index++;
     feedback.style.display = 'block';
-    feedback.textContent = 'Wrong!'
+    feedback.textContent = 'Wrong!';
+    // feedback.style.color = 'red';
+
     setTimeout(function() {
-    feedback.style.display = 'none';
-    }, 1100);
+      feedback.style.display = 'none';
+      }, 1100);
     chooseQuestion();
 
   }
 }
 
-
 function gameOver() {
 
   questionEl.textContent = '';
   answerSection.style.display = 'none';
-  score = timeLeft;
+  //temp fix for score being 1 less than it should be-
+  score = timeLeft + 1;
   console.log(score);
   //your score display
   questionEl.textContent = `Great job! Your score is: ${score}`;
 
-
+//create message to ask for highscore input
   var inputmsg = document.createElement("p");
   inputmsg.innerText = "Please enter your initials";
   questionEl.appendChild(inputmsg);
@@ -182,7 +186,7 @@ begin.addEventListener('click', function(e) {
   quizmain.style.display = 'flex';
 
   // console.log('test');
-  console.log(quizQuestions.length);
+  // console.log(quizQuestions.length);
 
   gameStart();
   countdown();
