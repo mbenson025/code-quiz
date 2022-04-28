@@ -52,7 +52,7 @@ header {
   color: #fff;
 }
 
-#quiz-main {
+.quiz-main, .yourScore {
   font-family: 'Lato', sans-serif;
   font-size: larger;
   height: 95vh;
@@ -66,7 +66,7 @@ header {
   display: none;
 }
 
-.quiz-box {
+.quiz-box, .scorebox {
   background-color: var(--primary-color);
   border-radius: 10px;
   padding: 20px;
@@ -75,7 +75,7 @@ header {
   border: 2px solid var(--secondary-color);
 }
 
-h2 {
+h2, .scoremsg {
   text-align: center;
   margin-top: 30px;
 
@@ -164,6 +164,30 @@ p {
 .begin:hover {
   opacity: 0.9;
 }
+
+
+.yourscore {
+  display: none;
+}
+
+.input {
+  height: 30px;
+  width: 100px;
+  display: none;
+  background-color: #fff;
+  border: 2px solid var(--secondary-color);
+  margin-top: 50px;
+}
+
+
+input:focus {
+  outline: 0;
+}
+
+
+
+
+
 
 
 

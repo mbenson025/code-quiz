@@ -16,6 +16,10 @@ var cEl = document.getElementById('c');
 var dEl = document.getElementById('d');
 var answerSection = document.getElementById('answersection');
 var quizbox = document.getElementById('quiz-box');
+
+// input and highscores
+// var yourScore = document.getElementById('yourScore');
+// var scoreBox = document.getElementById('scorebox');
 // var scoreData = JSON.parse(localStorage.getItem(`userScore`));
 
 
@@ -164,6 +168,8 @@ function gameOver() {
 
   questionEl.textContent = '';
   answerSection.style.display = 'none';
+  //show input screen
+
   //temp fix for score being 1 less than it should be-
   score = timeLeft + 1;
   console.log(score);
@@ -174,6 +180,10 @@ function gameOver() {
   var inputmsg = document.createElement("p");
   inputmsg.innerText = "Please enter your initials";
   questionEl.appendChild(inputmsg);
+
+  
+
+
   
 }
 
