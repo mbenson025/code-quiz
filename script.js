@@ -37,13 +37,13 @@ let quizQuestions = [
 
   },
   {
-    question: 'What can a "loop" be used for in Javascript?',
-    choice: ['Storing data on a browser window', 'Changing a string to a number', 'Perform repeated tasks based on a condition', 'Downloading a file'],
-    answer: 'Perform repeated tasks based on a condition'
+    question: 'Which operator increments(adds one to) its operand?',
+    choice: ['&&', '%', '++', '=>'],
+    answer: '++'
 
   },
   {
-    question: 'What is the name of a series of characters written inside quotes?',
+    question: 'Name of a series of characters written inside quotes?',
     choice: ['string', 'yarn', 'function', 'hot dog'],
     answer: 'string'
 
@@ -110,7 +110,7 @@ function countdown() {
       clearInterval(timeInterval);
       gameOver();
 } 
-    if (index === quizQuestions.length - 1) {
+    if (index === quizQuestions.length) {
       clearInterval(timeInterval);
       gameOver();
     }
@@ -127,7 +127,7 @@ function compareAnswer(e) {
   console.log(userSelect);
   e.preventDefault();
 
-  if(index === quizQuestions.length - 1) {
+  if(index === quizQuestions.length) {
     gameOver();
   }
 
