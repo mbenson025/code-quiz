@@ -6,8 +6,6 @@ var gameRunning;
 
 // DOM variables
 var quiz = document.getElementById('quiz');
-var win = document.getElementById('win');
-var lose = document.getElementById('lose');
 var begin = document.getElementById('begin');
 var time = document.getElementById('time');
 var startpage = document.getElementById('startpage');
@@ -17,6 +15,7 @@ var bEl = document.getElementById('b');
 var cEl = document.getElementById('c');
 var dEl = document.getElementById('d');
 var answerSection = document.getElementById('answersection');
+var quizbox = document.getElementById('quiz-box');
 // var scoreData = JSON.parse(localStorage.getItem(`userScore`));
 
 
@@ -44,7 +43,7 @@ let quizQuestions = [
 
   },
   {
-    question: 'What is the name of a series of characters inside a set of quotes?',
+    question: 'What is the name of a series of characters written inside quotes?',
     choice: ['string', 'yarn', 'function', 'hot dog'],
     answer: 'string'
 
@@ -71,19 +70,10 @@ let quizQuestions = [
 
 
 function gameStart() {
-var index = 0;
+  var index = 0;
+  timeLeft = 45;
+chooseQuestion();
 
-
-  for (i = 0; i < quizQuestions.length; i++)
-    if (i < userChoice.length) {
-      index++;
-      chooseQuestion();
-      console.log('test1');
-
-    }else {
-      // gameOver();      
-      console.log('test2')
-  }
 }
 
 
@@ -94,7 +84,6 @@ function chooseQuestion() {
   bEl.textContent = quizQuestions[index].choice[1];
   cEl.textContent = quizQuestions[index].choice[2];
   dEl.textContent = quizQuestions[index].choice[3];
-
 
     aEl.onclick = function(e){
         compareAnswer(e)
@@ -108,16 +97,11 @@ function chooseQuestion() {
     dEl.onclick = function(e){
         compareAnswer(e)
     };
-
-    // questionEl.textContent = "";
-    // userChoice.textContent = ""; 
 }
 
 
 
 function countdown() {
-  timeLeft = 45;
-
   var timeInterval = setInterval(function () {
     if (timeLeft >= 0) {
       time.textContent = timeLeft;
@@ -142,17 +126,31 @@ function compareAnswer(e) {
   console.log(userSelect);
   e.preventDefault();
 
-  if(userSelect !== quizQuestions[index].answer) {
-    console.log('wrong');
-    timeLeft -= 10;
-    index++;
-    feedback.style.visibility = 'visible';
+  if(index === 5) {
+    gameOver();
+  }
 
-    chooseQuestion();
-  } else {
+  if(userSelect === quizQuestions[index].answer) {
     console.log('right');
-    timeLeft += 5
+    timeLeft += 5;
     index++;
+    feedback.style.display = 'block';
+    feedback.textContent = 'Correct!'
+    // setTimout makes the message disappear!
+    setTimeout(function() {
+      feedback.style.display = 'none';
+    }, 1100);
+    chooseQuestion();
+
+  } else {
+    console.log('wrong');
+    timeLeft -= 5
+    index++;
+    feedback.style.display = 'block';
+    feedback.textContent = 'Wrong!'
+    setTimeout(function() {
+    feedback.style.display = 'none';
+    }, 1100);
     chooseQuestion();
 
   }
@@ -161,8 +159,18 @@ function compareAnswer(e) {
 
 function gameOver() {
 
-  // questionEl.textContent = "";
-  // questionEl.textContent = "Finished!"
+  questionEl.textContent = '';
+  answerSection.style.display = 'none';
+  score = timeLeft;
+  console.log(score);
+  //your score display
+  questionEl.textContent = `Great job! Your score is: ${score}`;
+
+
+  var inputmsg = document.createElement("p");
+  inputmsg.innerText = "Please enter your initials";
+  questionEl.appendChild(inputmsg);
+  
 }
 
 // eventListeners
@@ -184,7 +192,7 @@ begin.addEventListener('click', function(e) {
 // answerSection.addEventListener('click', (e) => {
 //   // console.log(e.target); --tests clicking the buttons
 //     if (e.target.classList.contains('answer')) {
-//       compareAnswer();
+//       compareAnswer(e);
 //       console.log(e)
 //     }
 

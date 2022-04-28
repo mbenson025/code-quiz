@@ -66,7 +66,7 @@ header {
   border-radius: 10px;
   padding: 20px;
   width: 60%;
-  height: 50%;
+  height: 60%;
 }
 
 h2 {
@@ -106,16 +106,10 @@ ul li {
 
 .answersection small { 
   display: none;
-  /* font-size: 40px; */
+  font-size: 40px;
 }
 
-.answersection.right small {
-  visibility: visible;
-}
 
-.answersection.wrong small {
-  visibility:visible;
-}
 
 
 
@@ -165,4 +159,14 @@ p {
 }
 
 
+
+/* @media (max-width: 800px) {
+
+  .quiz-main,
+  .answersection {
+    width: 80%;
+    height: 80%;
+  }
+
+} */
 
