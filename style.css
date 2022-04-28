@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 
 :root {
   --primary-color: #C7D3D4FF;
@@ -21,19 +23,29 @@ header {
   justify-content: space-between;
   width: 80;
   margin: 5px;
+  font-family: 'Roboto', sans-serif;
 
 }
 
 .highscores {
   float: left;
-  color: var(--secondary-color)
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  font-size: larger;
+  font-weight: bolder;
+  padding: 5px;
+}
+
+.highscores:hover {
+  cursor: pointer;
 }
 
 
 .timer {
   float: right;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-decoration: none;
+  margin-right: 30px;
 }
 
 #quiz-main {
@@ -92,9 +104,9 @@ ul li {
   background-color:#195190FF;
 }
 
-.answersection small {
-  font-size: larger;
-  visibility: hidden;
+.answersection small { 
+  display: none;
+  /* font-size: 40px; */
 }
 
 .answersection.right small {

@@ -24,7 +24,7 @@ var questionEl = document.getElementById('question-title');
 
 var userChoice = document.querySelectorAll('.answer');
 
-
+var feedback = document.querySelector('.answersection small');
 
 
 
@@ -81,7 +81,7 @@ var index = 0;
       console.log('test1');
 
     }else {
-      // gameOver();
+      // gameOver();      
       console.log('test2')
   }
 }
@@ -109,8 +109,8 @@ function chooseQuestion() {
         compareAnswer(e)
     };
 
-    questionEl = "";
-    userChoice = ""; 
+    // questionEl.textContent = "";
+    // userChoice.textContent = ""; 
 }
 
 
@@ -146,6 +146,8 @@ function compareAnswer(e) {
     console.log('wrong');
     timeLeft -= 10;
     index++;
+    feedback.style.visibility = 'visible';
+
     chooseQuestion();
   } else {
     console.log('right');
@@ -159,6 +161,8 @@ function compareAnswer(e) {
 
 function gameOver() {
 
+  // questionEl.textContent = "";
+  // questionEl.textContent = "Finished!"
 }
 
 // eventListeners
