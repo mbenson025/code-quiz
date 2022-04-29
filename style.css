@@ -52,7 +52,7 @@ header {
   color: #fff;
 }
 
-.quiz-main, .yourScore {
+.quiz-main, .hiscore {
   font-family: 'Lato', sans-serif;
   font-size: larger;
   height: 95vh;
@@ -66,7 +66,7 @@ header {
   display: none;
 }
 
-.quiz-box, .scorebox {
+.quiz-box, .hiscorebox {
   background-color: var(--primary-color);
   border-radius: 10px;
   padding: 20px;
@@ -108,6 +108,7 @@ ul li {
 
 .answer:hover {
   opacity: 0.9;
+  padding: 16px;
 }
 
 .answersection small { 
@@ -176,7 +177,7 @@ p {
   display: none;
   background-color: #fff;
   border: 2px solid var(--secondary-color);
-  margin-top: 50px;
+
 }
 
 
@@ -184,9 +185,19 @@ input:focus {
   outline: 0;
 }
 
+.submit {
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+  padding: 6px;
+  margin: 10px;
+  display: none;
+}
 
 
-
+.hiScores, .hiscorebox, .scoretitle {
+  display: none;
+}
 
 
 

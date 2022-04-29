@@ -21,7 +21,9 @@ var quizbox = document.getElementById('quiz-box');
 // var yourScore = document.getElementById('yourScore');
 // var scoreBox = document.getElementById('scorebox');
 // var scoreData = JSON.parse(localStorage.getItem(`userScore`));
-
+var input = document.getElementById('input');
+var submit = document.getElementById('submit');
+var hiScorePage =document.getElementById('hiscore-page')
 
 var questionEl = document.getElementById('question-title');
 
@@ -168,6 +170,8 @@ function gameOver() {
 
   questionEl.textContent = '';
   answerSection.style.display = 'none';
+  input.style.display = 'block';
+  submit.style.display = 'block';
   //show input screen
 
   //temp fix for score being 1 less than it should be-
@@ -181,11 +185,14 @@ function gameOver() {
   inputmsg.innerText = "Please enter your initials";
   questionEl.appendChild(inputmsg);
 
-  
-
-
-  
 }
+
+
+  
+
+
+  
+
 
 // eventListeners
 
@@ -214,6 +221,20 @@ begin.addEventListener('click', function(e) {
 
 
 
+//SUBMIT BUTTON STORES TEXT(VALUE) OF INPUT
+submit.addEventListener('click', function(e) {
+  console.log(input.value);
+  highScore();
+});
 
+function highScore() {
+  questionEl.textContent = 'High Scores';
+  input.style.display = 'none';
+  submit.style.display = 'none';
+    
+    var nightmareHw = document.createElement('ol', 'li');
+    nightmareHw.innerText = `${input.value} Score: ${score}`;
+    questionEl.appendChild(nightmareHw);
 
+}
 
