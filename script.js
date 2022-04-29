@@ -23,7 +23,10 @@ var quizbox = document.getElementById('quiz-box');
 // var scoreData = JSON.parse(localStorage.getItem(`userScore`));
 var input = document.getElementById('input');
 var submit = document.getElementById('submit');
-var hiScorePage =document.getElementById('hiscore-page')
+var hiScorePage =document.getElementById('hiscore-page');
+var hiScoreBox = document.getElementById('hiscorebox');
+var scoreTitle = document.getElementById('scoretitle');
+var list = document.getElementById('list');
 
 var questionEl = document.getElementById('question-title');
 
@@ -228,13 +231,19 @@ submit.addEventListener('click', function(e) {
 });
 
 function highScore() {
-  questionEl.textContent = 'High Scores';
+  // questionEl.textContent = 'High Scores';
+  questionEl.textContent = '';
   input.style.display = 'none';
   submit.style.display = 'none';
+  quizmain.style.display = 'none';
+  hiScorePage.style.display = 'flex';
+  hiScoreBox.style.display = 'flex';
+  scoreTitle.style.display = 'flex';
+
     
-    var nightmareHw = document.createElement('ol', 'li');
+    var nightmareHw = document.createElement('li');
     nightmareHw.innerText = `${input.value} Score: ${score}`;
-    questionEl.appendChild(nightmareHw);
+    list.appendChild(nightmareHw);
 
 }
 
