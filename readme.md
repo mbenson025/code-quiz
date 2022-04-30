@@ -12,6 +12,8 @@
 
 <h2>Screenshot:</h2>
 
+![codequiz](https://user-images.githubusercontent.com/35643709/166109882-166917c7-d29b-4bb8-84c0-ce9a83721221.png)
+
 ## User Story
 
 ```
