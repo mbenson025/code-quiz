@@ -34,6 +34,7 @@ var userChoice = document.querySelectorAll('.answer');
 
 var feedback = document.querySelector('.answersection small');
 
+var highArray;
 
 
 
@@ -133,7 +134,7 @@ function countdown() {
 function compareAnswer(e) {
 
   userSelect = e.target.textContent;
-  console.log(userSelect);
+  // console.log(userSelect);
   e.preventDefault();
 
   if(index === quizQuestions.length) {
@@ -141,20 +142,18 @@ function compareAnswer(e) {
   }
 
   if(userSelect === quizQuestions[index].answer) {
-    console.log('right');
+    // console.log('right');
     timeLeft += 5;
     index++;
     feedback.style.display = 'block';
     feedback.textContent = 'Correct!';
-    // feedback.style.color = 'green';
-    // setTimeout makes the message disappear!
     setTimeout(function() {
       feedback.style.display = 'none';
       }, 1100);
     chooseQuestion();
 
   } else {
-    console.log('wrong');
+    // console.log('wrong');
     timeLeft -= 5
     index++;
     feedback.style.display = 'block';
@@ -213,21 +212,15 @@ begin.addEventListener('click', function(e) {
 });
 
 
-// answerSection.addEventListener('click', (e) => {
-//   // console.log(e.target); --tests clicking the buttons
-//     if (e.target.classList.contains('answer')) {
-//       compareAnswer(e);
-//       console.log(e)
-//     }
-
-// });
-
-
-
 //SUBMIT BUTTON STORES TEXT(VALUE) OF INPUT
 submit.addEventListener('click', function(e) {
+    if (input.value === "") {
+        alert("No!");
+        return;
+    } 
   console.log(input.value);
   highScore();
+  saveScores();
 });
 
 function highScore() {
@@ -240,10 +233,57 @@ function highScore() {
   hiScoreBox.style.display = 'flex';
   scoreTitle.style.display = 'flex';
 
-    
-    var nightmareHw = document.createElement('li');
-    nightmareHw.innerText = `${input.value} Score: ${score}`;
-    list.appendChild(nightmareHw);
+
 
 }
 
+function saveScores() {
+    // newScore = `${input.value} Score: ${score}`;
+
+    // var userScore = document.createElement('li');
+    // userScore.innerText = newScore;
+    // list.appendChild(userScore);
+    // console.log(userScore.textContent)
+    var hateHighScores = localStorage.getItem('hiscores');
+
+    if (hateHighScores !== null) {
+      highArray = JSON.parse(hateHighScores);
+    } else {
+      highArray = [];
+    }
+
+
+    newScore = `${input.value} Score: ${score}`;
+
+
+    highArray.push(newScore);
+
+
+    var stringArray = JSON.stringify(highArray);
+    localStorage.setItem('hiscores', stringArray);
+
+    anotherFunction();
+}
+
+
+function anotherFunction() {
+
+    var hateHighScores = localStorage.getItem('hiscores');
+
+
+
+    // newScore = `${input.value} Score: ${score}`;
+
+    var unString = JSON.parse(hateHighScores);
+
+    console.log(unString);
+
+    for (var i = 0; i < unString.length; i++) {
+      
+      var userScore = document.createElement('li');
+      userScore.textContent = unString[i];
+      list.appendChild(userScore);
+      
+    }
+    // console.log(userScore);
+}
