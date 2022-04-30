@@ -16,11 +16,10 @@ var cEl = document.getElementById('c');
 var dEl = document.getElementById('d');
 var answerSection = document.getElementById('answersection');
 var quizbox = document.getElementById('quiz-box');
+var returnBtn = document.getElementById('returnbtn');
 
 // input and highscores
-// var yourScore = document.getElementById('yourScore');
-// var scoreBox = document.getElementById('scorebox');
-// var scoreData = JSON.parse(localStorage.getItem(`userScore`));
+var highBtn = document.getElementById('highscores');
 var input = document.getElementById('input');
 var submit = document.getElementById('submit');
 var hiScorePage =document.getElementById('hiscore-page');
@@ -164,7 +163,6 @@ function compareAnswer(e) {
       feedback.style.display = 'none';
       }, 1100);
     chooseQuestion();
-
   }
 }
 
@@ -186,14 +184,8 @@ function gameOver() {
   var inputmsg = document.createElement("p");
   inputmsg.innerText = "Please enter your initials";
   questionEl.appendChild(inputmsg);
-
 }
 
-
-  
-
-
-  
 
 
 // eventListeners
@@ -203,6 +195,7 @@ begin.addEventListener('click', function(e) {
 
   startpage.style.display = 'none';
   quizmain.style.display = 'flex';
+  returnBtn.style.display = 'flex';
 
   // console.log('test');
   // console.log(quizQuestions.length);
@@ -210,6 +203,15 @@ begin.addEventListener('click', function(e) {
   gameStart();
   countdown();
 });
+
+
+highBtn.addEventListener('click', function(e) {
+    startpage.style.display = 'none';
+    quizmain.style.display = 'flex';
+    returnBtn.style.display = 'flex';
+    highScore();
+    anotherFunction();
+  });
 
 
 //SUBMIT BUTTON STORES TEXT(VALUE) OF INPUT
@@ -287,3 +289,15 @@ function anotherFunction() {
     }
     // console.log(userScore);
 }
+
+
+
+
+
+function clearScore() {
+    localStorage.clear();
+    unString.innerHTML="";
+}
+
+
+clearBtn.addEventListener("click", clearScore);

@@ -28,7 +28,7 @@ header {
 
 }
 
-.highscores {
+.highscores, .returnbtn, .clearBtn {
   float: left;
   color: var(--secondary-color);
   background-color: var(--primary-color);
@@ -38,11 +38,23 @@ header {
   padding: 5px;
 }
 
-.highscores:hover {
+.returnbtn {
+  display: none;
+}
+
+.clearBtn {
+  margin-left: 800px;
+}
+
+.highscores:hover, .clearBtn:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
+.returnbtn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
 .timer {
   float: right;
