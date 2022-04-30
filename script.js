@@ -2,7 +2,7 @@
 let score = 0;
 let timeLeft;
 var index = 0;
-var gameRunning;
+var highArray;
 
 // DOM variables
 var quiz = document.getElementById('quiz');
@@ -32,8 +32,6 @@ var questionEl = document.getElementById('question-title');
 var userChoice = document.querySelectorAll('.answer');
 
 var feedback = document.querySelector('.answersection small');
-
-var highArray;
 
 
 
@@ -82,9 +80,7 @@ function gameStart() {
   var index = 0;
   timeLeft = 45;
 chooseQuestion();
-
 }
-
 
 
 function chooseQuestion() {
@@ -109,7 +105,6 @@ function chooseQuestion() {
 }
 
 
-
 function countdown() {
   var timeInterval = setInterval(function () {
       time.textContent = timeLeft;
@@ -127,13 +122,9 @@ function countdown() {
 }
 
 
-
-
-
 function compareAnswer(e) {
 
   userSelect = e.target.textContent;
-  // console.log(userSelect);
   e.preventDefault();
 
   if(index === quizQuestions.length) {
@@ -141,7 +132,6 @@ function compareAnswer(e) {
   }
 
   if(userSelect === quizQuestions[index].answer) {
-    // console.log('right');
     timeLeft += 5;
     index++;
     feedback.style.display = 'block';
@@ -152,12 +142,10 @@ function compareAnswer(e) {
     chooseQuestion();
 
   } else {
-    // console.log('wrong');
     timeLeft -= 5
     index++;
     feedback.style.display = 'block';
     feedback.textContent = 'Wrong!';
-    // feedback.style.color = 'red';
 
     setTimeout(function() {
       feedback.style.display = 'none';
@@ -167,20 +155,17 @@ function compareAnswer(e) {
 }
 
 function gameOver() {
-
   questionEl.textContent = '';
   answerSection.style.display = 'none';
   input.style.display = 'block';
   submit.style.display = 'block';
-  //show input screen
 
-  //temp fix for score being 1 less than it should be-
   score = timeLeft + 1;
   console.log(score);
-  //your score display
+  //personal score display
   questionEl.textContent = `Great job! Your score is: ${score}`;
 
-//create message to ask for highscore input
+//create message to enter initials
   var inputmsg = document.createElement("p");
   inputmsg.innerText = "Please enter your initials";
   questionEl.appendChild(inputmsg);
@@ -188,33 +173,76 @@ function gameOver() {
 
 
 
+
+//brings up high scores page and hides quiz page
+function highScore() {
+  questionEl.textContent = '';
+  input.style.display = 'none';
+  submit.style.display = 'none';
+  quizmain.style.display = 'none';
+  hiScorePage.style.display = 'flex';
+  hiScoreBox.style.display = 'flex';
+  scoreTitle.style.display = 'flex';
+}
+
+function saveScores() {
+  var storageHighScores = localStorage.getItem('hiscores');
+
+    if (storageHighScores !== null) {
+      highArray = JSON.parse(storageHighScores);
+    } else {
+      highArray = [];
+    }
+
+    newScore = `${input.value} Score: ${score}`;
+
+    highArray.push(newScore);
+    var stringArray = JSON.stringify(highArray);
+    localStorage.setItem('hiscores', stringArray);
+
+    listScores();
+}
+
+//adds scores to a list
+function listScores() {
+  var storageHighScores = localStorage.getItem('hiscores');
+  var unString = JSON.parse(storageHighScores);
+
+  for (var i = 0; i < unString.length; i++) {
+    var userScore = document.createElement('li');
+    userScore.textContent = unString[i];
+    list.appendChild(userScore);
+  }
+}
+
+
+
+
+
 // eventListeners
 
-//start page click to quiz screen
+//start page--begin starts quiz
 begin.addEventListener('click', function(e) {
 
   startpage.style.display = 'none';
   quizmain.style.display = 'flex';
   returnBtn.style.display = 'flex';
 
-  // console.log('test');
-  // console.log(quizQuestions.length);
-
   gameStart();
   countdown();
 });
 
-
+//high scores button
 highBtn.addEventListener('click', function(e) {
     startpage.style.display = 'none';
     quizmain.style.display = 'flex';
     returnBtn.style.display = 'flex';
     highScore();
-    anotherFunction();
+    listScores();
   });
 
 
-//SUBMIT BUTTON STORES TEXT(VALUE) OF INPUT
+//submit to store initials for high scores section
 submit.addEventListener('click', function(e) {
     if (input.value === "") {
         alert("No!");
@@ -225,79 +253,13 @@ submit.addEventListener('click', function(e) {
   saveScores();
 });
 
-function highScore() {
-  // questionEl.textContent = 'High Scores';
-  questionEl.textContent = '';
-  input.style.display = 'none';
-  submit.style.display = 'none';
-  quizmain.style.display = 'none';
-  hiScorePage.style.display = 'flex';
-  hiScoreBox.style.display = 'flex';
-  scoreTitle.style.display = 'flex';
 
 
 
-}
-
-function saveScores() {
-    // newScore = `${input.value} Score: ${score}`;
-
-    // var userScore = document.createElement('li');
-    // userScore.innerText = newScore;
-    // list.appendChild(userScore);
-    // console.log(userScore.textContent)
-    var hateHighScores = localStorage.getItem('hiscores');
-
-    if (hateHighScores !== null) {
-      highArray = JSON.parse(hateHighScores);
-    } else {
-      highArray = [];
-    }
-
-
-    newScore = `${input.value} Score: ${score}`;
-
-
-    highArray.push(newScore);
-
-
-    var stringArray = JSON.stringify(highArray);
-    localStorage.setItem('hiscores', stringArray);
-
-    anotherFunction();
-}
-
-
-function anotherFunction() {
-
-    var hateHighScores = localStorage.getItem('hiscores');
-
-
-
-    // newScore = `${input.value} Score: ${score}`;
-
-    var unString = JSON.parse(hateHighScores);
-
-    console.log(unString);
-
-    for (var i = 0; i < unString.length; i++) {
-      
-      var userScore = document.createElement('li');
-      userScore.textContent = unString[i];
-      list.appendChild(userScore);
-      
-    }
-    // console.log(userScore);
-}
-
-
-
-
+//clear scores button
+clearBtn.addEventListener("click", clearScore);
 
 function clearScore() {
     localStorage.clear();
     unString.innerHTML="";
 }
-
-
-clearBtn.addEventListener("click", clearScore);
