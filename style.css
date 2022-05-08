@@ -62,6 +62,7 @@ header {
   text-decoration: none;
   margin-right: 30px;
   color: #fff;
+  display: none;
 }
 
 .quiz-main, .hiscore-page {
@@ -78,14 +79,22 @@ header {
   display: none;
 }
 
+
 .quiz-box, .hiscorebox {
   background-color: var(--primary-color);
   border-radius: 10px;
   padding: 20px;
   width: 60%;
-  height: 60%;
+  height: 70%;
   border: 2px solid var(--secondary-color);
 }
+
+.hiscorebox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 
 h2, .scoremsg {
   text-align: center;
@@ -187,6 +196,7 @@ p {
   display: none;
   background-color: #fff;
   border: 2px solid var(--secondary-color);
+  margin: 50px 300px;
 
 }
 
@@ -200,8 +210,17 @@ input:focus {
   border-radius: 2px;
   font-size: 12px;
   padding: 6px;
-  margin: 10px;
+  margin: 10px 325px;
   display: none;
+  border: 2px solid var(--secondary-color);
+  position: absolute;
+  float: right;
+  
+}
+
+.submit:hover {
+  opacity: 0.8;
+
 }
 
 

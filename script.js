@@ -17,6 +17,7 @@ var dEl = document.getElementById('d');
 var answerSection = document.getElementById('answersection');
 var quizbox = document.getElementById('quiz-box');
 var returnBtn = document.getElementById('returnbtn');
+var timerDisplay = document.querySelector('.timer')
 
 // input and highscores
 var highBtn = document.getElementById('highscores');
@@ -78,7 +79,7 @@ let quizQuestions = [
 
 function gameStart() {
   var index = 0;
-  timeLeft = 45;
+  timeLeft = 85;
 chooseQuestion();
 }
 
@@ -160,7 +161,9 @@ function gameOver() {
   input.style.display = 'block';
   submit.style.display = 'block';
 
+  score += 10
   score = timeLeft + 1;
+  
   console.log(score);
   //personal score display
   questionEl.textContent = `Great job! Your score is: ${score}`;
@@ -199,7 +202,6 @@ function saveScores() {
     highArray.push(newScore);
     var stringArray = JSON.stringify(highArray);
     localStorage.setItem('hiscores', stringArray);
-
     listScores();
 }
 
@@ -207,6 +209,7 @@ function saveScores() {
 function listScores() {
   var storageHighScores = localStorage.getItem('hiscores');
   var unString = JSON.parse(storageHighScores);
+  console.log(storageHighScores);
 
   for (var i = 0; i < unString.length; i++) {
     var userScore = document.createElement('li');
@@ -227,6 +230,7 @@ begin.addEventListener('click', function(e) {
   startpage.style.display = 'none';
   quizmain.style.display = 'flex';
   returnBtn.style.display = 'flex';
+  timerDisplay.style.display = 'flex';
 
   gameStart();
   countdown();
