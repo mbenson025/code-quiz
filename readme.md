@@ -1,15 +1,14 @@
-<h1> Code Quiz </h1>
+<h1> <a href="https://mbenson025.github.io/code-quiz/">Code Quiz</a> </h1>
 
 ## Table of Contents
 
--[Link](#link) -[Installation](#installation) -[Instructions](#instructions) -[Screenshots](#screenshots) -[User-Story](#user-story) -[Acceptance-Criteria](#acceptance-criteria) -[Credits](#credits) -[License](#license)
+-[About](#about) -[Installation](#installation) -[Instructions](#instructions) -[Screenshots](#screenshots) -[Technologies-Used](#technologies-used) -[Credits](#credits) -[Contact](#contact) -[License](#license)
 
 <br></br>
 
-## Link:
+## About
 
-<a href="https://mbenson025.github.io/code-quiz/">Code Quiz</a>
-
+This application presents the user with an interactive multiple choice quiz with questions about coding. The quiz is timed and time is added or subtracted based on if the correct or incorrect answers are chosen. The remaining time and correctly answered questions factor into the points for a high score. The user is able to save their high score on the final page.
 <br>
 
 ## Installation
@@ -33,29 +32,13 @@ Download/clone repository or click link for browser link.
 
 ![codequiz3](https://user-images.githubusercontent.com/35643709/167311839-69847838-b149-4c31-85ef-fa1ee30c7249.JPG)
 
-## User-Story
+<br>
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Technologies used:
 
-## Acceptance-Criteria
+HTML5, CSS and JavaScript
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```
+<br>
 
 ## Credits
 
@@ -72,6 +55,24 @@ https://teamtreehouse.com/home
 
 https://app.pluralsight.com/library/
 
-## License
+## Contact:
 
-NA
+<br>
+
+Mason Benson - mbenson025@gmail.com
+
+GitHub Profile - https://github.com/mbenson025
+
+<br>
+
+<br>
+
+## License:
+
+<br>
+
+MIT License
+
+Copyright (c) 2022 Mason Benson
+
+Licensed under the [MIT](LICENSE) license.
